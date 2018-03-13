@@ -1,0 +1,21 @@
+<div>
+    <div class="filter-wrap">
+        <filter-com :loading="loading"></filter-com>
+    </div>
+    <x-loading v-loading="loading">
+        <div class="list-wrap" :data="ListData">
+            <list-com :loading="loading"></list-com>
+            <div class="pagition-wrap">
+                <x-pagination
+                    show-sizer
+                    show-total
+                    @change-current="goToPage"
+                    @change-pagesize="onChangeSize"
+                    :current-page-num="searchParams.page"
+                    :total="total"
+                    :page-size="searchParams.page_size">
+                </x-pagination>
+            </div>
+        </div>
+    </x-loading>
+</div>

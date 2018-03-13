@@ -1,0 +1,29 @@
+{
+  "name": "pre-template-vue",
+  "version": "1.0.1",
+  "description": "get init vue project template",
+  "bin": {
+    "ptv": "ptv.js"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiayuxiaoyan/pre-template-vue.git"
+  },
+  "keywords": [
+    "pre-template-vue",
+    "pretemplatevue",
+    "preTemplateVue"
+  ],
+  "author": "xiayuxiaoyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiayuxiaoyan/pre-template-vue/issues"
+  },
+  "homepage": "https://github.com/xiayuxiaoyan/pre-template-vue#readme",
+  "dependencies": {
+    "yargs": "^11.0.0"
+  }
+}

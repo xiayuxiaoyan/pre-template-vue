@@ -3,13 +3,14 @@
 const fs = require('fs')
 const path = require('path');
 const childProcess = require('child_process');
-const IS_WIN = process.platform.indexOf('win') === 0;
+const util = require('./util.js');
+const copyForder = require('./copy-folder.js').copyForder
+
 const filterSrc = '../tmpl/filter-file'
 const simpleSrc = '../tmpl/simple-standar-file'
 const tmplSrc = '../tmpl'
 
 //import {copy} from './copy-folder.js'
-var copyForder = require('./copy-folder.js').copyForder
 
 // 设置文件执行时的使用文档
 var argv = require('yargs')
@@ -58,22 +59,6 @@ let createFolder = (folder, folderSrc) => {
 	copyForder(src, folder)
 }
 
-let transformCmd = (cmd)=> {
-	if (IS_WIN) {
-	    cmd = 'start "" "' + cmd + '"';
-	} else {
-		if (process.env['XDG_SESSION_COOKIE'] ||
-		    process.env['XDG_CONFIG_DIRS'] ||
-		    process.env['XDG_CURRENT_DESKTOP']) {
-		  cmd = 'xdg-open ' + cmd;
-		} else if (process.env['GNOME_DESKTOP_SESSION_ID']) {
-		  cmd = 'gnome-open ' + cmd;
-		} else {
-		  cmd = 'open ' + cmd;
-		}
-	}
-	return cmd;
-}
 // 生成空文件
 if(argv.fileEmpty && argv.fileEmpty.length > 0){
 	argv.fileEmpty.forEach( (folder) => {
@@ -108,7 +93,7 @@ if(argv.fileFilter && argv.fileFilter.length > 0){
 if(argv.openTemp) {
 	let src = path.resolve(__filename, tmplSrc)
 	if(src) {
-		let cmd = transformCmd(src)
+		let cmd =util.transformCmd(src)
  		childProcess.exec(cmd);
 	}
 }

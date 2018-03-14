@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "get init vue project template",
   "bin": {
-    "ptv": "ptv.js"
+    "ptv": "src/ptv.js"
   },
   "scripts": {
     "test": "test"
